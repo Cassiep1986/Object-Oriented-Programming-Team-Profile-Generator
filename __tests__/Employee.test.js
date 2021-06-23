@@ -22,7 +22,7 @@ describe("Employee", () => {
       //Arrange
       const employee = new Employee("Jane", "Janedoe@gmail.com", 820);
       //Assert
-      expect(employee.email).toBe("Janedoe@gmail");
+      expect(employee.email).toBe("Janedoe@gmail.com");
     });
 
     it("should set the ID property of the employee", () => {
