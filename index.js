@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 
+
 const employees = [];
 
 function init() {
@@ -38,14 +39,14 @@ function init() {
 
 init();
 
-function employeeType() {
+const employeeType = () => {
     inquirer.prompt({
         type:"list",
         name:"choice",
         message:"Would you like to add an additional employee?",
         choices: ["Engineer", "Intern", "Exit"]
     })
-    .then(function(data) {
+    .then((data) => {
         switch (expr) {
             case"Engineer":
                 initEngineer();
@@ -61,3 +62,6 @@ function employeeType() {
     })
 }
 
+module.exports = {
+    employeeType,
+};
