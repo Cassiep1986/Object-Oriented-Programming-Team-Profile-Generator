@@ -1,5 +1,30 @@
-const profileTemplate = () =>
-`<!DOCTYPE html>
+// const Manager = require("./lib/Manager");
+// const Engineer = require("./lib/Engineer");
+// const Intern = require("./lib/Intern");
+
+const profileTemplate = (employees) => {
+  let teamMember = "";
+  for (let i = 0; i < employees.length; i++) {
+    switch (employees[i].getRole()) {
+      case "Manager":
+    teamMember += `<div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary">
+              <p class="title">Engineer</p>
+              <p class="subtitle">${employees[i].name}</p>
+            </article>
+            </div>
+          </div>
+      </div>
+    </div>`;
+    break;
+    default:
+     `<h1> Half Way there</h1>`;
+    }
+  }
+  let body = `<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -9,22 +34,8 @@ const profileTemplate = () =>
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
-    <div class="tile is-ancestor">
-        <div class="tile is-vertical is-8">
-          <div class="tile">
-            <div class="tile is-parent is-vertical">
-              <article class="tile is-child notification is-primary">
-                <p class="title">${manager.name}</p>
-                <p class="subtitle">Manager</p>
-              </article>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
- 
   </body>
-</html>`
-
-
+</html>`;
+  return body;
+};
 module.exports = profileTemplate;

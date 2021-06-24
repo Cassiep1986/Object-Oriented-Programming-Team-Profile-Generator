@@ -5,7 +5,35 @@ const profileTemplate = require("./src/profile-template");
 
 const employees = [];
 
-function init() {
+const init = () => {
+  inquirer
+    .prompt({
+      type: "list",
+      name: "startup",
+      message: "To start buliding your team profile, choice a role",
+      choices: ["Manager", "Engineer", "Intern", "Exit"],
+    })
+
+    .then((data) => {
+      switch (data.startup) {
+        case "Manager":
+          initManager();
+          break;
+        case "Engineer":
+          initEngineer();
+          break;
+          case "Intern":
+            initIntern;
+            break;
+            default:
+              console.log("hello!!!!")
+      }
+    });
+};
+
+init();
+
+const initManager = () => {
   inquirer
     .prompt([
       {
@@ -38,8 +66,6 @@ function init() {
     });
 }
 
-init();
-
 const employeeChoice = () => {
   inquirer
     .prompt({
@@ -57,16 +83,20 @@ const employeeChoice = () => {
         case "Intern":
           initIntern();
           break;
+        case "Manager":
+          initManager;
+          break;
         default:
-          const profileTemplate = () => {
-            fs.writeFile("./dist/TeamProfile.html", htmlPageContent(employees), (err) =>
-              err
-                ? console.log(err)
-                : console.log("Successfully created TeamProfile")
-            );
-          };
+          initprofile();
       }
     });
+};
+
+const initprofile = () => {
+  const htmlPageContent = profileTemplate(employees);
+  fs.writeFile("./dist/Team-Profile.html", htmlPageContent, (err) =>
+    err ? console.log(err) : console.log("Successfully created Profile!")
+  );
 };
 
 function initEngineer() {
@@ -76,5 +106,3 @@ function initEngineer() {
 function initIntern() {
   console.log("You got this Intern!");
 }
-
-module.exports = Manager;
