@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
-
+const fs = require("fs");
+const profileTemplate = require("./src/profile-template");
 
 const employees = [];
 
@@ -33,35 +34,47 @@ function init() {
           manager.officeNumber
         )
       );
-      employeeType()
+      employeeChoice();
     });
 }
 
 init();
 
-const employeeType = () => {
-    inquirer.prompt({
-        type:"list",
-        name:"choice",
-        message:"Would you like to add an additional employee?",
-        choices: ["Engineer", "Intern", "Exit"]
+const employeeChoice = () => {
+  inquirer
+    .prompt({
+      type: "list",
+      name: "choice",
+      message: "Would you like to add an additional employee?",
+      choices: ["Engineer", "Intern", "Exit"],
     })
-    .then((data) => {
-        switch (expr) {
-            case"Engineer":
-                initEngineer();
-                break;
-            case "Intern":
-                initIntern();
-                break;
-                //Function to Create Html Page declared below
-            default:
-                inithtml();
 
-        }
-    })
+    .then((data) => {
+      switch (data.choice) {
+        case "Engineer":
+          initEngineer();
+          break;
+        case "Intern":
+          initIntern();
+          break;
+        default:
+          const profileTemplate = () => {
+            fs.writeFile("./dist/TeamProfile.html", htmlPageContent(employees), (err) =>
+              err
+                ? console.log(err)
+                : console.log("Successfully created TeamProfile")
+            );
+          };
+      }
+    });
+};
+
+function initEngineer() {
+  console.log("You got this Engineer!");
 }
 
-module.exports = {
-    employeeType,
-};
+function initIntern() {
+  console.log("You got this Intern!");
+}
+
+module.exports = Manager;
