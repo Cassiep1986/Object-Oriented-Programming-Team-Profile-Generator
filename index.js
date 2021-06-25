@@ -28,7 +28,7 @@ const init = () => {
           initIntern;
           break;
         default:
-          console.log("hello!!!!");
+          return;
       }
     });
 };
