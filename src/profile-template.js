@@ -3,8 +3,9 @@ const profileTemplate = (employees) => {
   for (let i = 0; i < employees.length; i++) {
     switch (employees[i].getRole()) {
       case "Manager":
-      console.log("HotDOg!!!");
-      teamMember += `    <div class="tile is-ancestor">
+        console.log("HotDOg!!!");
+        teamMember += `    <div class="tile is-ancestor">
+        <div class="tile is-4">
           <div class="tile">
               <article class="tile is-child notification is-primary">
                 <p class="title">${employees[i].getRole()}</p>
@@ -15,8 +16,9 @@ const profileTemplate = (employees) => {
                   <li>Office #: ${employees[i].officeNumber}</li>    
                 </ul>
               </article>
-        </div>
-      </div>`;
+            </div>
+          </div>
+        </div>`;
     }
     // console.log(teamMember);
     // console.log(employees[i].getRole());

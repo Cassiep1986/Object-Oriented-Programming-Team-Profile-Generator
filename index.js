@@ -72,7 +72,7 @@ const employeeChoice = () => {
       type: "list",
       name: "choice",
       message: "Would you like to add an additional employee?",
-      choices: ["Engineer", "Intern", "Exit"],
+      choices: ["Engineer", "Intern", "Manager", "Exit"],
     })
 
     .then((data) => {
@@ -84,7 +84,7 @@ const employeeChoice = () => {
           initIntern();
           break;
         case "Manager":
-          initManager;
+          initManager();
           break;
         default:
           initprofile();
