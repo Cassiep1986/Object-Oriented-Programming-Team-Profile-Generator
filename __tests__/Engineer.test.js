@@ -2,7 +2,7 @@ const Engineer = require("../lib/Engineer");
 
 describe("Engineer", () => {
   describe("Initilization", () => {
-    it("should create an object containing Engineer name, email id and github", () => {
+    it("should create an object containing engineer name, email, id and github", () => {
       //Arrange
       const engineer = new Engineer("John", "Johndoe@gmail.com", 314, "jd516");
       //Assert
@@ -33,7 +33,7 @@ describe("Engineer", () => {
       expect(engineer.id).toBe(314);
     });
 
-    it("should set the Github property of the engineer", () => {
+    it("should set the github property of the engineer", () => {
         //Arrange
         const engineer = new Engineer("John", "Johndoe@gmail.com", 314, "jd516");
         //Assert

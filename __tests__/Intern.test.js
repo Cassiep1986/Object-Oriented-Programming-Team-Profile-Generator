@@ -2,7 +2,7 @@ const Intern = require("../lib/Intern");
 
 describe("Intern", () => {
   describe("Initilization", () => {
-    it("should create an object containing intern name, email id and school", () => {
+    it("should create an object containing intern name, email, id and school", () => {
       //Arrange
       const intern = new Intern("Jill", "Jillybean@gmail.com", 254, "UofA");
       //Assert
