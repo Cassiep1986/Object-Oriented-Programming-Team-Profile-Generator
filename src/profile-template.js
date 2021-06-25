@@ -1,28 +1,25 @@
-// const Manager = require("./lib/Manager");
-// const Engineer = require("./lib/Engineer");
-// const Intern = require("./lib/Intern");
-
 const profileTemplate = (employees) => {
   let teamMember = "";
   for (let i = 0; i < employees.length; i++) {
     switch (employees[i].getRole()) {
       case "Manager":
-    teamMember += `<div class="tile is-ancestor">
-      <div class="tile is-vertical is-8">
-        <div class="tile">
-          <div class="tile is-parent is-vertical">
-            <article class="tile is-child notification is-primary">
-              <p class="title">Engineer</p>
-              <p class="subtitle">${employees[i].name}</p>
-            </article>
-            </div>
-          </div>
-      </div>
-    </div>`;
-    break;
-    default:
-     `<h1> Half Way there</h1>`;
+      console.log("HotDOg!!!");
+      teamMember += `    <div class="tile is-ancestor">
+          <div class="tile">
+              <article class="tile is-child notification is-primary">
+                <p class="title">${employees[i].getRole()}</p>
+                <p class="subtitle">${employees[i].name}</p>
+                <ul>
+                  <li>Email: ${employees[i].email}</li>
+                  <li>ID: ${employees[i].id}</li>
+                  <li>Office #: ${employees[i].officeNumber}</li>    
+                </ul>
+              </article>
+        </div>
+      </div>`;
     }
+    // console.log(teamMember);
+    // console.log(employees[i].getRole());
   }
   let body = `<!DOCTYPE html>
 <html>
@@ -32,6 +29,7 @@ const profileTemplate = (employees) => {
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="./style.css" />
+    ${teamMember}
   </head>
   <body>
   </body>
