@@ -1,5 +1,7 @@
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 const fs = require("fs");
 const profileTemplate = require("./src/profile-template");
 
@@ -22,11 +24,11 @@ const init = () => {
         case "Engineer":
           initEngineer();
           break;
-          case "Intern":
-            initIntern;
-            break;
-            default:
-              console.log("hello!!!!")
+        case "Intern":
+          initIntern;
+          break;
+        default:
+          console.log("hello!!!!");
       }
     });
 };
@@ -64,7 +66,7 @@ const initManager = () => {
       );
       employeeChoice();
     });
-}
+};
 
 const employeeChoice = () => {
   inquirer
@@ -94,15 +96,73 @@ const employeeChoice = () => {
 
 const initprofile = () => {
   const htmlPageContent = profileTemplate(employees);
-  fs.writeFile("./dist/Team-Profile.html", htmlPageContent, (err) =>
+  fs.writeFile("./dist/Sample-Team-Profile.html", htmlPageContent, (err) =>
     err ? console.log(err) : console.log("Successfully created Profile!")
   );
 };
 
-function initEngineer() {
-  console.log("You got this Engineer!");
-}
+const initEngineer = () => {
+  inquirer
+    .prompt([
+      {
+        name: "name",
+        message: "What is the Engineer's name?",
+      },
+      {
+        name: "email",
+        message: "What is the Engineer's email address?",
+      },
+      {
+        name: "id",
+        message: "What is the Engineer's id number?",
+      },
+      {
+        name: "officenumber",
+        message: "What is the Engineer's Github Username?",
+      },
+    ])
+    .then(function (engineer) {
+      employees.push(
+        new Engineer(
+          engineer.name,
+          engineer.email,
+          engineer.id,
+          engineer.github
+        )
+      );
+      employeeChoice();
+    });
+};
 
 function initIntern() {
-  console.log("You got this Intern!");
+  inquirer
+    .prompt([
+      {
+        name: "name",
+        message: "What is the Intern's name?",
+      },
+      {
+        name: "email",
+        message: "What is the Intern's email address?",
+      },
+      {
+        name: "id",
+        message: "What is the Intern's id number?",
+      },
+      {
+        name: "officenumber",
+        message: "Where did the Intern attend school?",
+      },
+    ])
+    .then(function (intern) {
+      employees.push(
+        new Intern(
+          intern.name,
+          intern.email,
+          intern.id,
+          intern.school
+        )
+      );
+      employeeChoice();
+    });
 }
