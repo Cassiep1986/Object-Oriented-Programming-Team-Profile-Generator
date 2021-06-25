@@ -51,7 +51,7 @@ const initManager = () => {
         message: "What is your manager's id number?",
       },
       {
-        name: "officenumber",
+        name: "officeNumber",
         message: "What is your manager's officeNumber?",
       },
     ])
@@ -117,7 +117,7 @@ const initEngineer = () => {
         message: "What is the Engineer's id number?",
       },
       {
-        name: "officenumber",
+        name: "github",
         message: "What is the Engineer's Github Username?",
       },
     ])
@@ -150,7 +150,7 @@ function initIntern() {
         message: "What is the Intern's id number?",
       },
       {
-        name: "officenumber",
+        name: "school",
         message: "Where did the Intern attend school?",
       },
     ])

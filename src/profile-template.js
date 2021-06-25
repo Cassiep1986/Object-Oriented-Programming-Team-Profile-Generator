@@ -29,9 +29,9 @@ const profileTemplate = (employees) => {
           <p class="subtitle">${employees[i].name}</p>
           <div class="content"></div>
           <ul>
-            <li>Email: ${employees[i].email}</li>
+            <li>Email:${employees[i].email}</li>
             <li>ID: ${employees[i].id}</li>
-            <li>Office #: ${employees[i].github}</li>    
+            <li>Github: ${employees[i].github}</li>    
           </ul>
           </div>
         </article>
@@ -49,7 +49,7 @@ const profileTemplate = (employees) => {
             <ul>
               <li>Email: ${employees[i].email}</li>
               <li>ID: ${employees[i].id}</li>
-              <li>Office #: ${employees[i].school}</li>    
+              <li>School: ${employees[i].school}</li>    
             </ul>
             </div>
           </div>
